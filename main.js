@@ -37,7 +37,8 @@ const filterByStr = (ArrayOur) => {
 };
 
 const getResponse = async () => {
-  const response = await fetch(url);
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  const response = await fetch(proxyurl + url);
   const info = await response.json();
   const dataArray = info.data;
 
