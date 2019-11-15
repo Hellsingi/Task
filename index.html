@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Task</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <h2 class="title">Test task for "Масштабные решения"</h2>
+
+  <div>
+    <form>
+      <label for="inputText">Enter number or string</label>
+
+      <input type="text" id="inputText" name="inputText" placeholder="Enter number or string.." />
+
+      <label for="register">Case sensitive</label>
+      <input type="checkbox" id="register" name="register" value="Cats" onchange="changeRegister()" />
+      <br>
+      <input type="button" id="lengthButton" value="length" />
+
+      <input type="button" id="substringButton" value="substring" />
+    </form>
+    <textarea name="output" id="resultOutput" cols="100" rows="10" placeholder="Result"></textarea>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
