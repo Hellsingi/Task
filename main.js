@@ -9,7 +9,7 @@ function changeRegister() {
   register = chbox.checked;
 }
 
-const filterByLenght = (ArrayOur) => {
+const filterByLenght = ArrayOur => {
   const number = inputText.value;
   if (number % 1 !== 0) {
     alert("Please enter an integer number");
@@ -20,9 +20,7 @@ const filterByLenght = (ArrayOur) => {
   resultOutput.value = result;
 };
 
-const url = "https://www.mrsoft.by/data.json";
-
-const filterByStr = (ArrayOur) => {
+const filterByStr = ArrayOur => {
   let string = inputText.value;
   let result = "";
   resultOutput.value = result;
@@ -36,14 +34,20 @@ const filterByStr = (ArrayOur) => {
   resultOutput.value = result;
 };
 
-const getResponse = async () => {
-  const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  const response = await fetch(proxyurl + url);
-  const info = await response.json();
-  const dataArray = info.data;
+const url = "https://www.mrsoft.by/data.json";
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-  lengthButton.addEventListener("click", () => filterByLenght(dataArray));
-  substringButton.addEventListener("click", () => filterByStr(dataArray));
+const getResponse = async () => {
+  try {
+    const response = await fetch(proxyurl + url);
+    const info = await response.json();
+    const dataArray = info.data;
+
+    lengthButton.addEventListener("click", () => filterByLenght(dataArray));
+    substringButton.addEventListener("click", () => filterByStr(dataArray));
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 getResponse();
