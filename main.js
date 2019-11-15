@@ -9,7 +9,7 @@ function changeRegister() {
   register = chbox.checked;
 }
 
-const filterByLenght = ArrayOur => {
+const filterByLenght = (ArrayOur) => {
   const number = inputText.value;
   if (number % 1 !== 0) {
     alert("Please enter an integer number");
@@ -20,17 +20,28 @@ const filterByLenght = ArrayOur => {
   resultOutput.value = result;
 };
 
-const filterByStr = ArrayOur => {
+const filterByStr = (ArrayOur) => {
   let string = inputText.value;
   let result = "";
+  
   resultOutput.value = result;
+  
   if (register === false) {
+    const arrayResult = [];
     string = string.toLowerCase();
     const ArrayOurWith = ArrayOur.map(word => word.toLocaleLowerCase());
-    result = ArrayOurWith.filter(word => word.indexOf(string) != -1);
+
+    for (let i = 0; i < ArrayOurWith.length; i++) {
+      if (ArrayOurWith[i].indexOf(string) != -1) {
+        arrayResult.push(ArrayOur[i]);
+      }
+    }
+
+    result = arrayResult;
   } else if (register === true) {
     result = ArrayOur.filter(word => word.indexOf(string) != -1);
   }
+
   resultOutput.value = result;
 };
 
